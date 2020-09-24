@@ -21,9 +21,11 @@ class Scrabble {
             println("No words could be made from the available tiles ${tileRack.asString()}")
         } else {
             val highestScoringWord = tileRack.highestScoringWord()
+            val higestTripleLetterScoreWord = tileRack.highestTripleLetterScoreWord()
             println("Tiles chosen: ${tileRack.asString()}")
             println("Longest valid word: ${longestValidWord.value}")
             println("Highest scoring word: ${highestScoringWord?.value} is worth ${highestScoringWord?.totalScore()}")
+            println("Highest triple letter scoring word: ${higestTripleLetterScoreWord?.value} is worth ${higestTripleLetterScoreWord?.highestTripleLetterScore()}")
         }
     }
 

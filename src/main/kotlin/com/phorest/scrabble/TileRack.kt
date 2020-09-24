@@ -28,6 +28,16 @@ class TileRack(private val tiles: List<Tile>, private val dictionary: Dictionary
     }
 
     fun highestScoringWord(): Word? {
+        val validWords = validWords()
+        return validWords.sortedByDescending { it.totalScore() }.first()
+    }
+
+    fun highestTripleLetterScoreWord(): Word? {
+        val validWords = validWords()
+        return validWords.sortedByDescending { it.highestTripleLetterScore() }.first()
+    }
+
+    private fun validWords(): MutableSet<Word> {
         val validWords = mutableSetOf<Word>()
 
         repeat(7) { i ->
@@ -39,7 +49,7 @@ class TileRack(private val tiles: List<Tile>, private val dictionary: Dictionary
                 validWords.addAll(dictionary.allValidWordsFrom(attempt).map { Word(it) })
             }
         }
-        return validWords.sortedByDescending { it.totalScore() }.first()
+        return validWords
     }
 
     // Stolen from the internet!!!
